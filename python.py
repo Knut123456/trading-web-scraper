@@ -15,36 +15,50 @@ soup = BeautifulSoup(page.text, "html.parser")
 
 
 
-info = []
-rows =[]
+names = []
 # Find the table with the stock information
 
 div = soup.find_all("div", role="table")
 rows = soup.find_all( role="row")
+data_list = ()
+
+data_lists = {
+    
+}
+thisdict = {
+    "row":  "{}"
+}
+#print(rows[0].get_text().strip())
 
 
+rows0 = rows[0]
+rows0span = rows0.find_all("span")
 
+
+for span in rows0span:
+        span_text = span.get_text().strip()
+        names.append(span_text)
+#for span in rows0span:
+     #rows0span0 = span[0].get_text().strip()
+     #print(span.get_text().strip())
 
 for row in rows:
-    #print(div[0])
-
-     
+    i = 0
     # Find all span elements in each row
-  
     spans = row.find_all("span")
+    
     # Extract and print or store the text content from each span
     for span in spans:
-        row_data = [span.get_text().strip()]
-        #row_data_sort = row_data.sort(separator=",")
-        #row_data_1 = row_data_sort [0]
-        print(row_data)
-        # Append the row data to the rows list
-        #info.append(row_data_sort)  
-   
+          
 
-print(info)
+          
+       
+        
+#print (data_list)   
+
+
 with open(json_file, "w") as file:
-    json.dump(info, file)
+    json.dump(thisdict, file)
             
 #print(div.prettify())
 #print (div)
