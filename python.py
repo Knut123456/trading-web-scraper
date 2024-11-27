@@ -21,8 +21,10 @@ names = []
 
 # Find the table with the stock information
 
-div = soup.find_all("div", role="table")
-rows = soup.find_all("div", role="row")
+main_div = soup.find("div", class_="FlexTable__StyledDiv-sc-v6wpic-0 gDVRVW")
+rows = main_div.find_all("div", role="row")
+rows_length = len(rows)
+print(rows_length)
 
 thisdict = {
     
@@ -40,33 +42,55 @@ rows0pan = rows0.find_all("span")
 
 
 for text in rows0pan:
-    row0_text = rows0pan.get_text().strip()
+    row0_text = text.get_text().strip()
     names.append(row0_text)
 
+def find_child_nodes(node):
+    # Finds all descendant nodes within the given node
+    
+   # for child in node.children
+
+    #if child_nodes_length > 0:
+       
+    """    find_child_nodes(child_nodes)
+
+    if child_nodes_length == 0:
+        child_nodes_singel = node.find(recursive=True)
+        text_content = child_nodes_singel.get_text(strip=True)
+        print(text_content)
+        #return text_content """
+    
+    
 
 print (names)
-#for span in rows0span:
-     #rows0span0 = span[0].get_text().strip()
-     #print(span.get_text().strip())
+
 rowcheck = True
 for row in rows:
-    #time.sleep(random.randint(1,3))
-    # Find all span elements in each row
-    divs = row.find_all("div")
-    texts = div.find_all(text = True)
-    
+    #print(rows[2])
+    divs = row.find_all("div", role ="columnheader")
+    print(divs[0])
+    #print(divs.get_text().strip()[0])
     rowdict = {}
     if rowcheck == True:
         print("row is working")
     rowcheck = False
     # Extract and print or store the text content from each span
     for div in divs:
-        for text in texts:
-            for index, value in enumerate(texts):
-                name = names[index]
-                rowdict[name] = span_text
-            
-                span_text = span.get_text().strip()
+        print(divs[0])
+        #test = find_child_nodes(div)
+        #print(test)
+        #print(div.get_text().strip()[0])
+        print(divs_children[0])
+        tags_with_text = soup.find_all(lambda tag: tag.string and tag.string.strip())
+
+        for tag in tags_with_text:
+            print(f"Tag: {tag.name}, Text: {tag.string.strip()}")
+    """     for text in texts: """
+    """         for index, value in enumerate(texts): """
+    """             name = names[index] """
+    """             rowdict[name] = span_text """
+    """          """
+    """             span_text = text.get_text().strip()  """
                     
 
                     #print(f"Index: {index}, Value: {value}")
