@@ -20,25 +20,36 @@ def finn_alle_filer(filepath):
 
 finn_alle_filer("csv_file")
 
-timestamp = []
+stamp = "stamp"
+file_name = "file_name"
+timestamp = {}
 # get the timestamp
 for file in all_files:
     gettime = os.path.getmtime(file)
-    timestamp.append(gettime)
+    timestamp[file_name] = file
+    timestamp[stamp] = gettime
 
-for ts in timestamp:
-    print(datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S'))
+
+#print(timestamp)
+
+timestamp_stamp = [timestamp[stamp]]
+timestamp_only = max(timestamp_stamp)
+
+#print(timestamp.items())
+
+for key, value in timestamp.items():
+    if value == timestamp_only:
+        # If the value matches, print the corresponding file_name
+        file =timestamp['file_name']
 
 pd.set_option('display.max_rows', None)
 
 pd.set_option('display.max_columns', None)
 
 
-#print (file_pd_read)
-#file_pd_read.info()
-
-#first_row = file_pd_read.iloc[:]
-#print (first_row)
-""" name = file_pd_read.at[ "Navn"]
-age_of_bob = file_pd_read.at[ "Navn"]  """
-
+pd_file = pd.read_csv(file)
+#print(pd_file)
+for index, row in pd_file.iterrows():
+    what_i_want = ['Navn', 'I dag %', 'Siste', 'I dag +/-', 'I dag', 'Omsetning', 'Børsverdi']
+    what_i_want_info = row[what_i_want]
+    print(what_i_want_info)
