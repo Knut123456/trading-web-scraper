@@ -72,12 +72,13 @@ def csv_file_to_database():
 
     for table in what_i_want:
         table_info_info =f" {table},"
+
         
     
     
     create_table_query = f"""
         CREATE TABLE IF NOT EXISTS {table_name}(
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        id INT AUTO_INCREMENT PRIMARY KEY   
 
         );
         """

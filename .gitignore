@@ -4,3 +4,4 @@
 *.csv
 /sql lokalt
 .env
+README local.md
