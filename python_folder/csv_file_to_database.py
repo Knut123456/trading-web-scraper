@@ -47,30 +47,55 @@ def csv_file_to_database():
 
     pd.set_option('display.max_columns', None)
 
-
+    what_i_want = ['Navn', 'I dag %', 'Siste', 'I dag +/-', 'I dag', 'Omsetning', 'Børsverdi']
     pd_file = pd.read_csv(file)
     #print(pd_file)
     for index, row in pd_file.iterrows():
-        what_i_want = ['Navn', 'I dag %', 'Siste', 'I dag +/-', 'I dag', 'Omsetning', 'Børsverdi']
         what_i_want_info = row[what_i_want]
-        #print(what_i_want_info)
+        print(what_i_want_info)
 
     
-
+    print(what_i_want)
     now = datetime.now()
 
-    year_now = now.year
-    month_now = now.month
-    day_now = now.day
-    hour_now = now.hour
-    minute_now = now.minute
-    second_now = now.second
-    date_time_obj_now = datetime(year_now, month_now, day_now, hour_now, minute_now, second_now)
+    formatted_datetime = now.strftime("%Y_%m_%d_%H_%M_%S") 
     
+    print(formatted_datetime)
+    table_name = f"akjse_table_made_{formatted_datetime} "
+
+    print(table_name)
     conn = connect_to_database()
+
+    cursor = conn.cursor()
+
+    
+
+    for table in what_i_want:
+        table_info_info =f" {table},"
+        
+    
+    
+    create_table_query = f"""
+        CREATE TABLE IF NOT EXISTS {table_name}(
+        id INT AUTO_INCREMENT PRIMARY KEY,
+
+        );
+        """
+    for table in what_i_want:
+        table_info_info =f" {table},"
+        add_column_query = f"""
+            ALTER TABLE {table_name}
+            ADD COLUMN {table};
+            """
+        cursor.execute(add_column_query)
+
+    print(create_table_query)  
+    cursor.execute(create_table_query)
     
     #print(cursor)
 
+
+    conn.close()
 
 
 csv_file_to_database()
