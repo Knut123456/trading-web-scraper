@@ -7,6 +7,8 @@ def connect_to_database():
 
     # Load environment variables from .env file
 
+    load_dotenv()
+    
     host = os.getenv("DB_HOST")
     user = os.getenv("DB_USER")
     password = os.getenv("DB_PASSWORD")

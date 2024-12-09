@@ -63,7 +63,7 @@ def web_scraper ():
                  #print(key, value) 
                            
             main[name_dict] = nesteddict
-
+            print(main)
                              
                 
         df = pd.DataFrame.from_dict(main, orient="index")
