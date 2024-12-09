@@ -72,7 +72,7 @@ Dette gir bedre sikkerhet og kontroll, spesielt når det gjelder datatilgang.
 1. **Klone prosjektet**:
 
    ```sh
-   git clone https://github.com/dittbrukernavn/trading-web-scraper.git
+   git clone https://github.com/Knut123456/trading-web-scraper.git
    cd trading-web-scraper
    ```
 
