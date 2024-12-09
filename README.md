@@ -38,11 +38,11 @@ Dersom du ønsker å bruke denne trading boten selv, må du sette opp en SQL-dat
 For at applikasjonen skal fungere korrekt, må du sette opp følgende miljøvariabler i en `.env`-fil:
 
 ```env
-DB_HOST=10.100.10.142
-DB_USER=trading_web_scraper_user_normal_user
-DB_PASSWORD=4321
-DB_NAME=trading_web_scraper
-PORT=3306
+DB_HOST= IP address
+DB_USER= username
+DB_PASSWORD= password
+DB_NAME= database name
+PORT= database port(usally 3306)
 ```
 
 - **DB\_HOST**: IP-adressen til databasen din.
