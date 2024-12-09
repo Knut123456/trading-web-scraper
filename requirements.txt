@@ -4,4 +4,3 @@ pandas
 mysql.connector
 dotenv
 bs4
---upgrade pip setuptools wheel

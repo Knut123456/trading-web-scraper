@@ -79,7 +79,21 @@ Dette gir bedre sikkerhet og kontroll, spesielt når det gjelder datatilgang.
 2. **Installer avhengigheter**:
    Kør følgende kommando for å installere nødvendige Python-pakker:
 
+   burde ha en local environment fordi du mikser den ikke med det ande 
+
+
+   linux
    ```sh
+   python -m venv myenv
+   source myenv/bin/activate 
+   pip install -r requirements.txt
+   ```
+
+   Windows
+
+     ```sh
+   python -m venv myenv
+   myenv\Scripts\activate  
    pip install -r requirements.txt
    ```
 
