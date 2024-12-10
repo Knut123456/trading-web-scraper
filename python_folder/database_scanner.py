@@ -31,11 +31,12 @@ def database_scanner():
         second = int(split_result_1[8])  
 
         date_time_obj = datetime(year, month, day, hour, minute, second)
+        drop_table = table[0]
 
         difference = now - date_time_obj
         if difference > timedelta(hours=2):
-            cursor.execute(f"DROP TABLE {table};")
-            print(f"removed table {table}")
+            cursor.execute(f"DROP TABLE {drop_table};")
+            print(f"removed table {drop_table}")
     conn.close()
 
 database_scanner()
