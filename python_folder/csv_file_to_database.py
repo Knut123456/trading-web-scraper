@@ -71,12 +71,14 @@ def csv_file_to_database():
     
     table_info_list = []
     for table in what_i_want:
+        table_info_list.append("varc")
         table_info_list.append(table)
+       
 
 
         
     
-    
+    print(table_info_list)
     create_table_query = f"""
         CREATE TABLE IF NOT EXISTS {table_name}(
         id INT AUTO_INCREMENT PRIMARY KEY   
