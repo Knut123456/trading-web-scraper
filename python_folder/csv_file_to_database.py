@@ -52,7 +52,8 @@ def csv_file_to_database():
     #print(pd_file)
     for index, row in pd_file.iterrows():
         what_i_want_info = row[what_i_want]
-        #print(what_i_want_info)
+
+        print(what_i_want_info)
 
     
    # print(what_i_want)
@@ -68,26 +69,32 @@ def csv_file_to_database():
 
     cursor = conn.cursor()
 
-    
-    table_info_list = []
-    for table in what_i_want:
-        table_info_list.append("varc")
-        table_info_list.append(table)
-       
 
 
+    change = "FLOAT"
+    def decide_column_type(column):
+        if column.strip() in ["Navn", "Børsverdi", "I dag +/-"]:
+            return "VARCHAR(255)"  # Use VARCHAR for textual or mixed data
+        else:
+            return "FLOAT"  # Use FLOAT for numeric data
         
-    
-    print(table_info_list)
+    formatted_list_with_types = [f"`{column.strip()}` {decide_column_type(column)}" for column in what_i_want]
+
+    """ for colomn in formatted_list_with_types:
+        if "avn" in colomn:
+            colomn_change = colomn.replace("FLOAT", "VARCHAR(255)")
+            formatted_list_with_types.append(colomn_change) """
+            
+    print(what_i_want)
     create_table_query = f"""
-        CREATE TABLE IF NOT EXISTS {table_name}(
-        id INT AUTO_INCREMENT PRIMARY KEY   
-         {',\n       VARCHAR(255)  '.join(table_info_list)}
+        CREATE TABLE {table_name}(
+        id INT AUTO_INCREMENT PRIMARY KEY, 
+         {',\n    '.join(formatted_list_with_types)}
         );
         """
     
     print(create_table_query)  
-    #cursor.execute(create_table_query)
+    cursor.execute(create_table_query)
    
 
     

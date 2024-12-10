@@ -25,7 +25,7 @@ def connect_to_database():
             port=port 
         )
         if conn.is_connected():
-            print("Connected to database")
+            print(f"Connected to database ,{database}")
             cursor= conn.cursor()
             return conn
             
