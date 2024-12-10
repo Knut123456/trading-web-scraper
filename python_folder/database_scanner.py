@@ -1,14 +1,41 @@
-
-def database_scanner ():
-
+def database_scanner():
     from connect_to_database import connect_to_database
+    from datetime import datetime, timedelta
+
+    now = datetime.now()
+    
     conn = connect_to_database()
 
     cursor = conn.cursor()
 
-    show_tables = cursor.execute("SHOW TABLES")
+    # Execute the SHOW TABLES query
+    cursor.execute("SHOW TABLES")
 
-    print(show_tables)
+    # Fetch the results
+    tables = cursor.fetchall()
+
+    # Print each table name
+    print("Tables in the database:")
+    for table in tables:
+
+        
+        edited = table[0]  # Each row is a tuple, so access the first element
+        #print(table) #
+        split_result_1 = edited.split('_')
+        #print(split_result_1)
+        year = int(split_result_1[3])
+        month = int(split_result_1[4])
+        day = int(split_result_1[5])
+        hour = int(split_result_1[6])
+        minute = int(split_result_1[7])
+        second = int(split_result_1[8])  
+
+        date_time_obj = datetime(year, month, day, hour, minute, second)
+
+        difference = now - date_time_obj
+        if difference > timedelta(hours=2):
+            cursor.execute(f"DROP TABLE {table};")
+            print(f"removed table {table}")
     conn.close()
 
-database_scanner ()
+database_scanner()

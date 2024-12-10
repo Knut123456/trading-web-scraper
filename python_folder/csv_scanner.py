@@ -55,6 +55,7 @@ def csv_scanner ():
             all_files_count = all_files[filecount]
             os.remove(all_files_count)
             print(f"The file is more than 2 hours old. Difference: {difference}, {all_files_count}")
+    print(difference_list)
 
 
     
