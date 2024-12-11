@@ -26,7 +26,6 @@ def connect_to_database():
         )
         if conn.is_connected():
             print(f"Connected to database ,{database}")
-            cursor= conn.cursor()
             return conn
             
     except Error as e:

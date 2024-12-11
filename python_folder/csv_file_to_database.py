@@ -47,21 +47,21 @@ def csv_file_to_database():
 
     pd.set_option('display.max_columns', None)
 
-    what_i_want = ['Navn', 'I dag %', 'Siste', 'I dag +/-', 'I dag', 'Omsetning', 'Børsverdi']
+    what_i_want = ['Navn',  'Siste',  'Omsetning', 'Børsverdi']
     pd_file = pd.read_csv(file)
     #print(pd_file)
     
 
-    
+    table_name = None
    # print(what_i_want)
     now = datetime.now()
 
     formatted_datetime = now.strftime("%Y_%m_%d_%H_%M_%S") 
     
-    print(formatted_datetime)
+    #print(formatted_datetime)
     table_name = f"akjse_table_made_{formatted_datetime} "
 
-    print(table_name)
+    #print(table_name)
     conn = connect_to_database()
 
     cursor = conn.cursor()
@@ -69,14 +69,12 @@ def csv_file_to_database():
 
 
     def decide_column_type(column):
-        if column.strip() in ["Navn", "Børsverdi", "I dag +/-"]:
+        if column.strip() in ["Navn","Siste","Omsetning","Børsverdi"]:
             return "VARCHAR(255)"  # Use VARCHAR for textual or mixed data
-        else:
-            return "FLOAT"  # Use FLOAT for numeric data
         
     formatted_list_with_types = [f"`{column.strip()}` {decide_column_type(column)}" for column in what_i_want]
             
-    print(what_i_want)
+    #print(what_i_want)
     create_table_query = f"""
         CREATE TABLE {table_name}(
         id INT AUTO_INCREMENT PRIMARY KEY, 
@@ -84,44 +82,56 @@ def csv_file_to_database():
         );
         """
     
-    print(create_table_query)  
+    #print(create_table_query)  
     cursor.execute(create_table_query)
-   
     for index, row in pd_file.iterrows():
-            what_i_want_info = row[what_i_want]
+        what_i_want_info = row[what_i_want]
 
 
-    key_list = []
-    value_list = []
+        
+        temp_dict_key = {} 
+        temp_dict_value = {} 
+       
+        for key, value in what_i_want_info.items():
+            temp_dict_key[key] = key
+            value = value.replace("\xa0", ".")
     
-    for key, value in what_i_want_info.items():
-        key_type = decide_column_type(key)
-
-        # Process based on type
-        if key_type == "VARCHAR(255)":
-            key_list.append(f"`{key}`")  # Add key to list with backticks
-            value_list.append(f"'{value}'")  # Add value with single quotes for strings
-        elif key_type == "FLOAT":
-            key_list.append(f"`{key}`")  # Add key to list with backticks
-            value_list.append(value)  # Add numeric value as is (no quotes)
-
-    # Convert lists to strings
+            temp_dict_value[key] = value
+        
+        keys = temp_dict_key.values()
+        
+        #print()
     
-    key_list_str = ", ".join(key_list)
-    print(key_list_str)
-    key_type = decide_column_type(key_list_str)
-    value_list_str = ", ".join(map(str, value_list))  # Ensure all values are strings
+        value_listsort = []
 
-    # Construct the SQL query
-    insert_table_query = f"INSERT INTO {table_name} ({key_list_str}) VALUES ({value_list_str});"
+ 
+        for key, value in temp_dict_value.items():
+            types = decide_column_type(key)
+            #print(types)
+            value_list = [value, types]
+            value_listsort.append(value_list)
+ 
 
-    # Construct the SQL query
-    print(insert_table_query)   
-    cursor.execute(insert_table_query)
-    
-    #print(cursor)
+        values = []
+        
+       
 
+        for (value, value_type) in value_listsort:
+                values.append(f"'{value}'")
+        
+        
+        insert_statement = f"""INSERT INTO {table_name} ({",".join(keys)}) VALUES ({",".join(values)});"""
+        #print(insert_statement)
+        
 
+        cursor.execute(insert_statement)
+        
+   
+    #print(values_dict)
+    conn.commit()  
     conn.close()
+
+    new_table_name = table_name
+    return new_table_name
 
 csv_file_to_database()
