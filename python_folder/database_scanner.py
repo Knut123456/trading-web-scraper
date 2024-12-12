@@ -15,7 +15,7 @@ def database_scanner():
     tables = cursor.fetchall()
 
     # Print each table name
-    print("Tables in the database:")
+    #print("Tables in the database:")
     for table in tables:
 
         

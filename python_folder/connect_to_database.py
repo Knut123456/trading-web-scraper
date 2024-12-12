@@ -25,7 +25,7 @@ def connect_to_database():
             port=port 
         )
         if conn.is_connected():
-            print(f"Connected to database ,{database}")
+           #print(f"Connected to database ,{database}")
             return conn
             
     except Error as e:

@@ -16,12 +16,10 @@
 
 - Trading bot
 
-Dette prosjektet er en **trading bot** som kombinerer en web scraper for å hente markedsdata og analysere disse for å anbefale investeringer. Prosjektet er ment å automatisere beslutningsprosessen for trading ved å bruke oppdaterte data som er hentet fra ulike nettsteder.
+Dette prosjektet er en **trading bot** som kombinerer en web scraper for å hente markedsdata og putter disse informasjon til en nettside
 
 ## Funksjoner
 
-
-- Web scraping
 
 - **Web Scraping**: Henter markedsdata fra forskjellige nettsteder i sanntid.
 - **SQL Database**: Bruker en SQL-database til å lagre informasjon om brukere, trading-data og historikk.
@@ -128,7 +126,7 @@ Dette gir bedre sikkerhet og kontroll, spesielt når det gjelder datatilgang.
 
 - Kontaktinformasjon
 
-Hvis du har noen spørsmål eller tilbakemeldinger, ta gjerne kontakt med meg via [e-postadresse eller GitHub-profil].
+Hvis du har noen spørsmål eller tilbakemeldinger, ta gjerne kontakt med meg via [GitHub-profil](https://github.com/Knut123456)
 
 Takk for at du sjekker ut mitt prosjekt, og lykke til med tradingen!
 

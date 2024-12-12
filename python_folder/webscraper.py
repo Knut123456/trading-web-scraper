@@ -72,7 +72,5 @@ def web_scraper ():
     else:
         print("Error retrieving data from Nordnet, status code is{0}".format(page.status_code))
     
-    """ for key, value in main.items():
-        print("{0}, {1}".format(key, value))    """
 
 web_scraper()

@@ -12,34 +12,47 @@ from webscraper import web_scraper
 from csv_scanner import csv_scanner
 from csv_file_to_database import csv_file_to_database
 from database_info import database_info 
+from database_scanner import database_scanner 
 
 #from python_folder/webscraper.py import web_scraper
 
 
 app = Flask(__name__)
+new_myresult = []
+new_column_names = []
 
-#web_scraper()
-new_myresult, new_column_names = database_info()
-
-#print(new_column_names)
-#print(new_myresult)
-
-csv_scanner()
-web_scraper()
-csv_file_to_database()
+def colletction():
+    global new_myresult, new_column_names
+    web_scraper()
+    csv_scanner()
+    csv_file_to_database()
+    database_scanner()
+    new_myresult, new_column_names = database_info()
 
 
 @app.route("/")
-def index():
-    return render_template("index.html",new_column_names, new_myresult)
+@app.route("/page/<int:page>")
+def index(page = 1):
+    global new_myresult, new_column_names
+    rows_per_page = 5
+    start = (page - 1) * rows_per_page  
+    end = start + rows_per_page
+    paginated_results = new_myresult[start:end]
+    total_pages = -(-len(new_myresult) // rows_per_page)
+    return render_template("index.html", 
+                        column_names=new_column_names, 
+                        results=paginated_results, 
+                        current_page=page, 
+                        total_pages=total_pages)
 
 if __name__=="__main__":
       # Initialize the scheduler
     scheduler = BackgroundScheduler()
 
     # Schedule `scheduled_tasks` to run every minute
-    scheduler.add_job(scheduled_tasks, IntervalTrigger(minutes=1))
+    scheduler.add_job(colletction, IntervalTrigger(minutes=1))
 
+    colletction()
     # Start the scheduler
     scheduler.start()
 
