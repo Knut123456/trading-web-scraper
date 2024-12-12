@@ -1,4 +1,4 @@
-from flask import Flask, render_template 
+from flask import Flask, render_template, requests 
 from pathlib import Path
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
@@ -13,6 +13,7 @@ from csv_scanner import csv_scanner
 from csv_file_to_database import csv_file_to_database
 from database_info import database_info 
 from database_scanner import database_scanner 
+from connect_to_database import connect_to_database 
 
 #from python_folder/webscraper.py import web_scraper
 
@@ -21,6 +22,7 @@ app = Flask(__name__)
 new_myresult = []
 new_column_names = []
 
+
 def colletction():
     global new_myresult, new_column_names
     web_scraper()
@@ -28,7 +30,7 @@ def colletction():
     csv_file_to_database()
     database_scanner()
     new_myresult, new_column_names = database_info()
-
+        
 
 @app.route("/")
 @app.route("/page/<int:page>")
@@ -44,7 +46,11 @@ def index(page = 1):
                         results=paginated_results, 
                         current_page=page, 
                         total_pages=total_pages)
-
+@app.route('/create_account', methods=['GET', 'POST'])
+def create_account():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
 if __name__=="__main__":
       # Initialize the scheduler
     scheduler = BackgroundScheduler()
@@ -52,7 +58,6 @@ if __name__=="__main__":
     # Schedule `scheduled_tasks` to run every minute
     scheduler.add_job(colletction, IntervalTrigger(minutes=1))
 
-    colletction()
     # Start the scheduler
     scheduler.start()
 

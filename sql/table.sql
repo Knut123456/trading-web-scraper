@@ -1,10 +1,5 @@
-CREATE TABLE aksje_info (
-    id AUTO_INCREMENT, PRIMARY KEY,
-    navn,
-    i_dag_prosent 
-    siste,
-    i_dag_pluss_minus 
-    i_dag ,
-    omsetning 
-    borsverdi 
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,   
+    username VARCHAR(50) NOT NULL,           
+    email VARCHAR(100) NOT NULL UNIQUE
 );

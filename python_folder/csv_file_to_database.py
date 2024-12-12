@@ -59,10 +59,10 @@ def csv_file_to_database():
     formatted_datetime = now.strftime("%Y_%m_%d_%H_%M_%S") 
     
     #print(formatted_datetime)
-    table_name = f"akjse_table_made_{formatted_datetime} "
+    table_name = f"akjse_table_made_{formatted_datetime}"
 
     #print(table_name)
-    conn = connect_to_database()
+    conn = connect_to_database("trading_web_scraper")
 
     cursor = conn.cursor()
 

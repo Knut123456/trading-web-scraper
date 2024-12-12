@@ -43,6 +43,16 @@ DB_NAME= database name
 PORT= database port(usally 3306)
 ```
 
+må ha for en annen database 
+```env
+DB_HOST_2 = IP address
+DB_USER_2 =username
+DB_PASSWORD_2 = password
+DB_NAME_2 = database name
+port_U2 = database port(usally 3306)
+```
+
+dette gjelder for begge databasene
 - **DB\_HOST**: IP-adressen til databasen din.
 - **DB\_USER**: Brukernavn for normal bruker av databasen. Det anbefales å opprette en egen bruker med begrensede rettigheter.
 - **DB\_PASSWORD**: Passord for denne brukeren.

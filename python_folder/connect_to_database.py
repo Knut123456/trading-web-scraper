@@ -1,5 +1,5 @@
 
-def connect_to_database():
+def connect_to_database(database):
     import mysql.connector
     from mysql.connector import Error
     from dotenv import load_dotenv
@@ -8,12 +8,19 @@ def connect_to_database():
     # Load environment variables from .env file
 
     load_dotenv()
-    
-    host = os.getenv("DB_HOST")
-    user = os.getenv("DB_USER")
-    password = os.getenv("DB_PASSWORD")
-    database = os.getenv("DB_NAME")
-    port = os.getenv("port")
+    if database == "trading_web_scraper":
+        host = os.getenv("DB_HOST")
+        user = os.getenv("DB_USER")
+        password = os.getenv("DB_PASSWORD")
+        database = os.getenv("DB_NAME")
+        port = os.getenv("port")
+
+    elif database == "trading_web_scraper_usefull_info":
+        host = os.getenv("DB_HOST_USEFULL_INFO")
+        user = os.getenv("DB_USER_USEFULL_INFO")
+        password = os.getenv("DB_PASSWORD_USEFULL_INFO")
+        database = os.getenv("DB_NAME_USEFULL_INFO")
+        port = os.getenv("port_USEFULL_INFO")
 
     
     try:
@@ -33,4 +40,4 @@ def connect_to_database():
 
     return None 
 
-connect_to_database()
+connect_to_database("trading_web_scraper")

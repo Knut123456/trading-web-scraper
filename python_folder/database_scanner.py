@@ -4,7 +4,7 @@ def database_scanner():
 
     now = datetime.now()
     
-    conn = connect_to_database()
+    conn = connect_to_database("trading_web_scraper")
 
     cursor = conn.cursor()
 
