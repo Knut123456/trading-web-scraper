@@ -11,9 +11,12 @@ def database_info():
 
     cursor.execute(f"SELECT * FROM {table}")
     myresult = cursor.fetchall()
+    
+    column_names = [desc[0] for desc in cursor.description]
 
     conn.close()
-
+    
     new_myresult = myresult
-    return new_myresult
+    new_column_names = column_names
+    return new_myresult, new_column_names
 database_info()

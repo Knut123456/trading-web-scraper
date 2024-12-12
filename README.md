@@ -110,7 +110,7 @@ Dette gir bedre sikkerhet og kontroll, spesielt når det gjelder datatilgang.
 
 - **Start boten** ved å kjøre hovedfilen:
   ```sh
-  python main.py
+  python .\flask\python_app.py
   ```
 - Etter oppstart vil boten hente markedsdata fra forskjellige nettsteder og gi deg oppdatert informasjon.
 
