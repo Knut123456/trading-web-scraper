@@ -3,19 +3,24 @@ from pathlib import Path
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 import sys
+""" from .python_folder.connect_to_database import connect_to_database
+from .python_folder.webscraper import web_scraper
+from .python_folder.csv_scanner import csv_scanner
+from .python_folder.csv_file_to_database import csv_file_to_database
+from .python_folder.database_info import database_info 
+from .python_folder.database_scanner import database_scanner 
+from .python_folder.connect_to_database import connect_to_database   """
 
-from python_folder  import web_scraper, csv_scanner , csv_file_to_database, database_info, database_scanner, connect_to_database
-""" current_dir = Path(__file__).parent
-python_folder = current_dir.parent /"python_folder"
+current_dir = Path(__file__).parent
+python_folder = current_dir / "python_folder"
 sys.path.append(str(python_folder))
- """
-
-""" from webscraper import web_scraper
+ 
+from webscraper import web_scraper
 from csv_scanner import csv_scanner
 from csv_file_to_database import csv_file_to_database
 from database_info import database_info 
 from database_scanner import database_scanner 
-from connect_to_database import connect_to_database  """
+from connect_to_database import connect_to_database   
 
 #from python_folder/webscraper.py import web_scraper
 

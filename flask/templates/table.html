@@ -16,13 +16,53 @@
             margin: 20px 0; /* Add vertical margin */
             font-family: Arial, sans-serif;
         }
-
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #f0ad4e;
+        }
+        .content {
+            padding: 20px;
+        }
     </style>
     <title>Document</title> 
 </head>
 <body>
     <div>
-
+        <div class="header">
+            <h1>Trading web scraper</h1>
+            <div class="nav-links">
+                <a href="/">index</a>
+                <a href="account">Create Account</a>
+                <!-- Add more links as needed -->
+            </div>
+        </div>
         <div>
             {% block content %}
                 <table>
