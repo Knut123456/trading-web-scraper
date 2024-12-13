@@ -1,9 +1,0 @@
-.next_page {
-    display: flex; /* Arrange items horizontally */
-    align-items: center; /* Vertically align items */
-    justify-content: center; /* Center the pagination bar */
-    gap: 10px; /* Add spacing between items */
-    margin: 20px 0; /* Add vertical margin */
-    font-family: Arial, sans-serif;
-}
-

@@ -14,8 +14,6 @@
 
 ## Velkommen til mitt prosjekt!
 
-- Trading bot
-
 Dette prosjektet er en **trading bot** som kombinerer en web scraper for å hente markedsdata og putter disse informasjon til en nettside
 
 ## Funksjoner
@@ -24,13 +22,18 @@ Dette prosjektet er en **trading bot** som kombinerer en web scraper for å hent
 - **Web Scraping**: Henter markedsdata fra forskjellige nettsteder i sanntid.
 - **SQL Database**: Bruker en SQL-database til å lagre informasjon om brukere, trading-data og historikk.
 
-## Komme i gang
-
-
-- Database oppsett
+## create database
 
 Dersom du ønsker å bruke denne trading boten selv, må du sette opp en SQL-database og lage brukerkontoer for **admin** og **vanlige brukere**. Dette gir forskjellige tilgangsnivåer til funksjonene og dataene som brukes i boten.
 
+need to have a mariadb database
+in linux you need to  
+
+   on linux you need to
+   ```sh
+   sudo apt install mariadb 
+   ```
+   then to 
 ### Miljøvariabler
 
 For at applikasjonen skal fungere korrekt, må du sette opp følgende miljøvariabler i en `.env`-fil:
