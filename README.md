@@ -92,19 +92,7 @@ Dette gir bedre sikkerhet og kontroll, spesielt når det gjelder datatilgang.
 
    burde ha en local environment fordi du mikser den ikke med det ande 
 
-
-   linux
    ```sh
-   python -m venv myenv
-   source myenv/bin/activate 
-   pip install -r requirements.txt
-   ```
-
-   Windows
-
-     ```sh
-   python -m venv myenv
-   myenv\Scripts\activate  
    pip install -r requirements.txt
    ```
 
