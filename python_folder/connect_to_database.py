@@ -1,7 +1,5 @@
 
 def connect_to_database(database):
-    from python_folder.append_path import append_paths
-    append_paths() 
     import mysql.connector
     from mysql.connector import Error
     from dotenv import load_dotenv

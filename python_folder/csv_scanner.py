@@ -1,8 +1,6 @@
 
 
 def csv_scanner ():
-    from python_folder.append_path import append_paths
-    append_paths() 
     import os
     from datetime import datetime, timedelta
 

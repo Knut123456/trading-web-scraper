@@ -9,30 +9,19 @@ from apscheduler.triggers.interval import IntervalTrigger
 
 # Path to add
 
-print("Before adding path:")
+""" print("Before adding path:")
 for path in sys.path:
     print(path)
+ """
+#custom_path = Path("python_folder")  # Replace this with your folder path
 
-custom_path = Path("python_folder")  # Replace this with your folder path
+from webscraper import web_scraper
+from csv_scanner import csv_scanner
+from csv_file_to_database import csv_file_to_database
+from database_info import database_info
+from database_scanner import database_scanner
+from connect_to_database import connect_to_database
 
-try: 
-    # Check if the folder exists
-    if custom_path.exists():
-        print(f"Adding {custom_path} to sys.path")
-        sys.path.append(str(custom_path))
-        
-        from webscraper import web_scraper
-        from csv_scanner import csv_scanner
-        from csv_file_to_database import csv_file_to_database
-        from database_info import database_info
-        from database_scanner import database_scanner
-        from connect_to_database import connect_to_database
-    
-    
-finally:
-    print("After adding path:")
-    for path in sys.path:
-        print(path)
 
 
 

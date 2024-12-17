@@ -90,18 +90,14 @@ Dette gir bedre sikkerhet og kontroll, spesielt når det gjelder datatilgang.
 2. **Installer avhengigheter**:
    Kør følgende kommando for å installere nødvendige Python-pakker:
 
-   burde ha en local environment fordi du mikser den ikke med det andre
+  
    windoes
    ```sh
-   python -m venv myenv
-   myenv\Scripts\activate
    pip install -r requirements.txt
    ```
 
    linux
    ```sh
-   python -m venv myenv
-   source myenv/bin/activate
    pip install -r requirements.txt
    ```
 
@@ -113,9 +109,6 @@ Dette gir bedre sikkerhet og kontroll, spesielt når det gjelder datatilgang.
 
 ## Hvordan bruke boten
 
-- Brukerveiledning
-- Start boten
-
 - **Start boten** ved å kjøre hovedfilen:
   ```sh
   python .\flask\python_app.py
@@ -124,17 +117,13 @@ Dette gir bedre sikkerhet og kontroll, spesielt når det gjelder datatilgang.
 
 ## Merk
 
-- Viktige merknader
-- Sikkerhet
-- Ansvarlig bruk
-
 - **Sikkerhet**: Ikke del `.env`-filen med sensitive detaljer. Beskytt den mot uautorisert tilgang.
 - **Bruk ansvarlig**: Denne trading boten er kun for demonstrasjonsformål. Bruk av investeringsverktøy innebærer risiko, og du bør ikke investere uten å forstå risikoen.
 
 
 ## Kontakt
 
-- Kontaktinformasjon
+
 
 Hvis du har noen spørsmål eller tilbakemeldinger, ta gjerne kontakt med meg via [GitHub-profil](https://github.com/Knut123456)
 

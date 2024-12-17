@@ -1,6 +1,5 @@
 def database_scanner():
-    from python_folder.append_path import append_paths
-    append_paths() 
+
     from connect_to_database import connect_to_database
     from datetime import datetime, timedelta
 

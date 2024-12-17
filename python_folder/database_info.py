@@ -1,6 +1,4 @@
 def database_info():
-    from python_folder.append_path import append_paths
-    append_paths() 
     from connect_to_database import connect_to_database
     from datetime import datetime, timedelta
     from csv_file_to_database import csv_file_to_database
