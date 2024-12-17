@@ -1,8 +1,14 @@
 def csv_file_to_database():
+   
     import os
     import pandas as pd
     from datetime import datetime
-    from connect_to_database import connect_to_database
+    
+    from pathlib import Path
+    import sys
+    parent_div = Path(__file__).parent
+    sys.path.append(str(parent_div))
+    from connect_to_database import connect_to_database_def
 
     all_files_name =[]
     all_files =[]
@@ -62,7 +68,7 @@ def csv_file_to_database():
     table_name = f"akjse_table_made_{formatted_datetime}"
 
     #print(table_name)
-    conn = connect_to_database("trading_web_scraper")
+    conn = connect_to_database_def("trading_web_scraper")
 
     cursor = conn.cursor()
 

@@ -1,5 +1,9 @@
 
 def web_scraper ():
+    from pathlib import Path
+    import sys
+    parent_div = Path(__file__).parent
+    sys.path.append(str(parent_div))
     from bs4 import BeautifulSoup
     import requests
     import pandas as pd

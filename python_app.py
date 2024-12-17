@@ -7,20 +7,14 @@ from apscheduler.triggers.interval import IntervalTrigger
 
 
 
-# Path to add
 
-""" print("Before adding path:")
-for path in sys.path:
-    print(path)
- """
-#custom_path = Path("python_folder")  # Replace this with your folder path
 
-from webscraper import web_scraper
-from csv_scanner import csv_scanner
-from csv_file_to_database import csv_file_to_database
-from database_info import database_info
-from database_scanner import database_scanner
-from connect_to_database import connect_to_database
+from python_folder.webscraper import web_scraper
+from python_folder.csv_scanner import csv_scanner
+from python_folder.csv_file_to_database import csv_file_to_database
+from python_folder.database_info import database_info
+from python_folder.database_scanner import database_scanner
+from python_folder.connect_to_database import connect_to_database_def
 
 
 
@@ -75,7 +69,7 @@ def create_account():
         username = request.form.get('username')
         password = request.form.get('password')
         email = request.form.get('email')
-        conn = connect_to_database("trading_web_scraper_usefull_info")
+        conn = connect_to_database_def("trading_web_scraper_usefull_info")
         cursor = conn.cursor()
         cursor.execute(f"INSERT INTO users (username, password, email) VALUES  ({username}, {password}, {email}")
 
@@ -85,11 +79,10 @@ def login():
         # Retrieve data from the form
         username = request.form.get('username')
         password = request.form.get('password')
-        conn = connect_to_database("trading_web_scraper_usefull_info")
+        conn = connect_to_database_def("trading_web_scraper_usefull_info")
         cursor = conn.cursor()
-        username = cursor.execute("select * from username" )
-        password = cursor.execute("select * from password" )
-       
+        cursor.execute(f"SELECT username, password FROM users where username = {username} and password = {password} ")
+        user = cursor.fetchone()
     
 
 

@@ -1,6 +1,10 @@
 
 
 def csv_scanner ():
+    from pathlib import Path
+    import sys
+    parent_div = Path(__file__).parent
+    sys.path.append(str(parent_div))
     import os
     from datetime import datetime, timedelta
 
