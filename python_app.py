@@ -1,41 +1,41 @@
+import sys
+from pathlib import Path
 from flask import Flask, render_template, request, redirect, url_for, flash
 from pathlib import Path
 from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.triggers.interval import IntervalTrigger
-import sys
-""" try: 
-    from .python_folder.connect_to_database import connect_to_database
-    from .python_folder.webscraper import web_scraper
-    from .python_folder.csv_scanner import csv_scanner
-    from .python_folder.csv_file_to_database import csv_file_to_database
-    from .python_folder.database_info import database_info 
-    from .python_folder.database_scanner import database_scanner 
-    from .python_folder.connect_to_database import connect_to_database   
+from apscheduler.triggers.interval import IntervalTrigger 
 
-    print("Python is searching for modules in these paths:")
+
+
+# Path to add
+
+print("Before adding path:")
+for path in sys.path:
+    print(path)
+
+custom_path = Path("python_folder")  # Replace this with your folder path
+
+try: 
+    # Check if the folder exists
+    if custom_path.exists():
+        print(f"Adding {custom_path} to sys.path")
+        sys.path.append(str(custom_path))
+        
+        from webscraper import web_scraper
+        from csv_scanner import csv_scanner
+        from csv_file_to_database import csv_file_to_database
+        from database_info import database_info
+        from database_scanner import database_scanner
+        from connect_to_database import connect_to_database
+    
+    
+finally:
+    print("After adding path:")
     for path in sys.path:
         print(path)
-finally:
-    print("Python is searching for modules in these paths:")
-    for path in sys.path:
-        print(path) 
-        """
-        
-current_dir = Path(__file__).parent
-python_folder = current_dir / "python_folder"
 
-# Check the type of python_folder
-print(f"Type of python_folder: {type(python_folder)}")
 
-# Convert to string before appending
-sys.path.append(str(python_folder))
 
-from webscraper import web_scraper
-from csv_scanner import csv_scanner
-from csv_file_to_database import csv_file_to_database
-from database_info import database_info 
-from database_scanner import database_scanner 
-from connect_to_database import connect_to_database    
 
 #from python_folder/webscraper.py import web_scraper
 
@@ -100,13 +100,7 @@ def login():
         cursor = conn.cursor()
         username = cursor.execute("select * from username" )
         password = cursor.execute("select * from password" )
-        # Validate the user
-        if username in users and users[username] == password:
-            flash('Login successful!', 'success')
-            return redirect(url_for('home'))
-        else:
-            flash('Invalid username or password. Please try again.', 'error')
-            return redirect(url_for('login'))
+       
     
 
 

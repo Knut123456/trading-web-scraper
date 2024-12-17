@@ -1,4 +1,6 @@
 def csv_file_to_database():
+    from python_folder.append_path import append_paths
+    append_paths() 
     import os
     import pandas as pd
     from datetime import datetime
