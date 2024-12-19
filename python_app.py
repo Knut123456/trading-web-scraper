@@ -70,9 +70,12 @@ def create_account():
         password = request.form.get('password')
         email = request.form.get('email')
         conn = connect_to_database_def("trading_web_scraper_usefull_info")
+        df_info = conn.get_server_info()
+        print(df_info)
         cursor = conn.cursor()
         cursor.execute(f"INSERT INTO users (username, password, email) VALUES  ({username}, {password}, {email}")
-
+        conn.close()
+ 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':

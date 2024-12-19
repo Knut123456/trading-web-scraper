@@ -89,17 +89,33 @@ Dette gir bedre sikkerhet og kontroll, spesielt når det gjelder datatilgang.
 
 2. **Installer avhengigheter**:
    Kør følgende kommando for å installere nødvendige Python-pakker:
+   vis du vil ha venv slik at dette ikke påvireker med andre proskjekter
 
-  
-   windoes
+   env_name kan du endre 
+   ```sh
+   python -m venv env_name
+   ```
+   windeos så gjør du 
+   ```sh
+   env_name\Scripts\activate.bat
+   ```
+
+   og på linux
+   ```sh
+   source env_name/bin/activate
+   ```
+   dette må du ha for at det skal fungere.
+
+   vis du vil ha det på venv så må du ha det activated når du gjør det
    ```sh
    pip install -r requirements.txt
    ```
 
-   linux
+   når du er ferdig med venv filen 
    ```sh
-   pip install -r requirements.txt
+   deactivate
    ```
+
 
 3. **Sett opp miljøvariabler**:
    Opprett en `.env`-fil i rotkatalogen og legg til informasjonen som vist tidligere.
