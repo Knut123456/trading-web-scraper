@@ -92,8 +92,6 @@ def csv_file_to_database():
     cursor.execute(create_table_query)
     for index, row in pd_file.iterrows():
         what_i_want_info = row[what_i_want]
-
-
         
         temp_dict_key = {} 
         temp_dict_value = {} 
