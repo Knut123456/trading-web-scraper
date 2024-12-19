@@ -17,7 +17,10 @@ from python_folder.database_scanner import database_scanner
 from python_folder.connect_to_database import connect_to_database_def
 
 
-
+conn = connect_to_database_def("trading_web_scraper_usefull_info")
+df_info = conn.get_server_info()
+print(df_info)
+cursor = conn.cursor()
 
 
 #from python_folder/webscraper.py import web_scraper
